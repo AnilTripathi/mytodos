@@ -4,16 +4,20 @@ A modern, responsive Todo application built with React, TypeScript, and Zustand 
 
 ## 🚀 Features
 
-- **Authentication System**
+- **Enhanced Authentication System**
   - Secure login/logout functionality
-  - Protected routes
-  - Persistent authentication state
+  - Protected routes with automatic redirects
+  - Persistent authentication across page refreshes
+  - Session management using localStorage
   
-- **Todo Management**
-  - Create new todos
+- **Advanced Todo Management**
+  - Create detailed todos with multiple attributes
+  - Set priority levels (Low, Medium, High)
+  - Add due dates with datetime picker
+  - Track completion dates automatically
   - Mark todos as complete/incomplete
   - Delete todos
-  - Persistent todo storage
+  - Persistent todo storage with localStorage
   
 - **Modern UI/UX**
   - Bootstrap-based responsive design
@@ -26,9 +30,14 @@ A modern, responsive Todo application built with React, TypeScript, and Zustand 
 - **Frontend Framework:** React 18 with TypeScript
 - **Build Tool:** Vite
 - **Routing:** React Router DOM v6
-- **State Management:** Zustand
-- **Styling:** Bootstrap 5 & Bootstrap Icons
-- **Type Safety:** TypeScript
+- **State Management:** 
+  - Zustand with persist middleware
+  - LocalStorage for data persistence
+- **Styling:** 
+  - Bootstrap 5 for responsive design
+  - Bootstrap Icons for visual elements
+  - Custom CSS for enhanced UI
+- **Type Safety:** TypeScript with strict mode
 
 ## 📁 Project Structure
 
@@ -108,9 +117,11 @@ The application implements a secure authentication flow:
 
 ### State Management with Zustand
 - Centralized state management using Zustand
+- Persistent storage with Zustand/persist middleware
+- Automatic state rehydration on page load
+- LocalStorage-based authentication persistence
+- Type-safe state management
 - Clean and simple store implementation
-- Persistent authentication state
-- Type-safe state access
 
 ### Routing
 - React Router v6 for navigation
@@ -123,6 +134,28 @@ The application implements a secure authentication flow:
 - Clear separation of concerns
 - TypeScript interfaces for props
 - Bootstrap-based styling
+
+## ✨ Todo Features
+
+### Todo Attributes
+- **Text Content:** The main todo description
+- **Priority Levels:** 
+  - High (Red)
+  - Medium (Yellow)
+  - Low (Blue)
+- **Dates:**
+  - Due Date: When the todo should be completed
+  - Assignment Date: When the todo was created
+  - Completion Date: When the todo was marked as done
+- **Status:**
+  - Completion state
+  - Visual indicators for completed items
+
+### Data Persistence
+- Todos persist across page refreshes
+- Authentication state maintained in sessions
+- Automatic state restoration
+- LocalStorage-based data management
 
 ## 🎨 Styling Guide
 
