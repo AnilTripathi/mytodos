@@ -1,0 +1,77 @@
+/* Center the container vertically and horizontally */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  color: #3a9ad9;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 500px;
+  font-family: Arial, sans-serif;
+}
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 8px;
+}
+
+.todo-button {
+  padding: 8px 12px;
+  background-color: #4cafef;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.todo-button:hover {
+  background-color: #3a9ad9;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.todo-text {
+  cursor: pointer;
+  flex: 1;
+  color: #3a9ad9;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+}
+
+.delete-btn {
+  background: rgb(241, 237, 237);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.delete-btn:hover {
+  background: rgb(245, 165, 165);
+}
