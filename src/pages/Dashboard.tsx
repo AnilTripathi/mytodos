@@ -35,20 +35,22 @@ const Dashboard:React.FC=()=> {
   };
 
   return (
-    <div className="container">
-      <h2 style={{textAlign:'center'}}> Todo List</h2>
-      <main>
-      <TodoForm addTodo={addTodo} />
-      <hr/>
-      <TodoList 
-        todos={todos}
-        toggleTodo={toggleTodo}
-        deleteTodo={deleteTodo}
-        />
-      </main>
-      <footer className="App-footer">
-        <p style={{textAlign:'center'}}>© 2025 My Todos</p>
-      </footer>
+    <div className="row h-100 justify-content-center align-items-center">
+      <div className="card shadow">
+        <div className="card-body p-4">
+            <h2 className="text-center mb-4">Todo List</h2>
+            <TodoForm addTodo={addTodo} />
+            <hr className="my-4"/>
+            <TodoList 
+                todos={todos}
+                toggleTodo={toggleTodo}
+                deleteTodo={deleteTodo}
+            />
+            <footer className="mt-4 pt-3 border-top">
+            <p className="text-center text-muted mb-0">© 2025 My Todos</p>
+            </footer>
+        </div>
+      </div>
     </div>
   );
 }

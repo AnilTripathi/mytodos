@@ -18,16 +18,19 @@ export const TodoForm: React.FC<TodoFormProps> = ({addTodo}) => {
     };
 
   return (
-    <form onSubmit={handleSubmit} className="todo-form">
+    <form onSubmit={handleSubmit} className="d-flex gap-2 mb-4">
       <CustomInput
         ref={inputRef}
         type="text"
         value={text}
         placeholder="Add new todo..."
         onChange={(e) => setText(e.target.value)}
-        className="todo-input"
+        className="form-control"
       />
-      <button type="submit" className="todo-button">+ Add</button>
+      <button type="submit" className="btn btn-primary">
+        <i className="bi bi-plus-circle me-1"></i>
+        Add
+      </button>
     </form>
   )
 }

@@ -3,10 +3,9 @@ import type { InputHTMLAttributes } from 'react';
 
 const CustomInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>((props, ref) => {
   return (
-    <input
-      ref={ref}
-      {...props}
-    />
+    <div className="col">
+        <input ref={ref}  {...props} type="text" className="form-control" placeholder="Enter Todo" aria-label="todo"/>
+    </div>
   );
 });
 

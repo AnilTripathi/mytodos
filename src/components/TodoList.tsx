@@ -8,18 +8,25 @@ interface TodoListProps {
     deleteTodo: (id: string) => void;
 }
 const TodoList:React.FC<TodoListProps> = ({todos,toggleTodo,deleteTodo}) => {
-  if (todos.length === 0) return <p>No todos yet! 🎉</p>;
   return (
-    <ul className="todo-list">
-      {todos.map(todo => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          toggleTodo={toggleTodo}
-          deleteTodo={deleteTodo}
-        />
-      ))}
-    </ul>
+    <div className="card">
+      <div className="card-body">
+        {todos.length === 0 ? (
+          <p className="text-center text-muted mb-0">No todos yet! 🎉</p>
+        ) : (
+          <ul className="list-group list-group-flush">
+            {todos.map(todo => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                toggleTodo={toggleTodo}
+                deleteTodo={deleteTodo}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
   )
 }
 

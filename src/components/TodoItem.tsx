@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 import type { Todo } from "../types";
 
 interface TodoItemProps {
@@ -10,15 +9,20 @@ interface TodoItemProps {
 
 const TodoItem:React.FC<TodoItemProps> = ({ todo, toggleTodo, deleteTodo }) => {
   return (
-    <li className="todo-item">
-      <span title="Click to toggle completion"
-        className={`todo-text ${todo.completed ? "completed" : ""}`}
+    <li className="list-group-item d-flex justify-content-between align-items-center">
+      <span
+        title="Click to toggle completion"
+        className={`flex-grow-1 ${todo.completed ? "text-decoration-line-through text-muted" : ""}`}
         onClick={() => toggleTodo(todo.id)}
+        style={{ cursor: 'pointer' }}
       >
         {todo.text}
       </span>
-      <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
-        ❌
+      <button 
+        className="btn btn-danger btn-sm ms-2" 
+        onClick={() => deleteTodo(todo.id)}
+      >
+        <i className="bi bi-trash"></i>
       </button>
     </li>
   );

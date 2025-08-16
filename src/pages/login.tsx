@@ -1,27 +1,21 @@
-import React, { useEffect } from "react";
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const login = useAuthStore((state) => state.login);
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const login = useAuthStore((s) => s.login);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticated, navigate]);
 
   const handleLogin = () => {
     login();
-    navigate("/dashboard", { replace: true });
+    navigate("/dashboard"); // Redirect after login
   };
 
   return (
     <div>
-      <h2>Login Page</h2>
-      <button onClick={handleLogin}>Login</button>
+      <h2>🔐 Login Page</h2>
+      <button className="btn btn-primary mt-3" onClick={handleLogin}>
+        Login
+      </button>
     </div>
   );
 };
