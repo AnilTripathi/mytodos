@@ -9,11 +9,15 @@ const Dashboard:React.FC=()=> {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
 
-  const addTodo = (text: string) => {
+  const addTodo = (todoData: { text: string; dueDate: Date | null; priority: 'low' | 'medium' | 'high' }) => {
     const newTodo: Todo = {
       id: Date.now().toString(),
-      text,
-      completed: false
+      text: todoData.text,
+      completed: false,
+      assignDate: new Date(),
+      dueDate: todoData.dueDate,
+      priority: todoData.priority,
+      completeDate: null
     };
     const updatedTodos = [...todos, newTodo];
     setTodos(updatedTodos);
@@ -22,7 +26,13 @@ const Dashboard:React.FC=()=> {
 
   const toggleTodo = (id: string) => {
     const updatedTodos = todos.map(todo =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todo.id === id 
+        ? { 
+            ...todo, 
+            completed: !todo.completed,
+            completeDate: !todo.completed ? new Date() : null
+          } 
+        : todo
     );
     setTodos(updatedTodos);
     localStorage.setItem('todos', JSON.stringify(updatedTodos));
