@@ -8,7 +8,7 @@ const Layout: React.FC = () => {
       <Navbar />
       <div className="container h-100 py-4">
         <div className="row justify-content-center">
-          <div className="col-xl-6 col-lg-8 col-md-10 col-sm-11">
+          <div className="col-xl-12 col-lg-12 col-md-10 col-sm-11">
             <Outlet />
           </div>
         </div>

@@ -4,10 +4,11 @@ import { TodoForm } from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 
 const Dashboard:React.FC=()=> {
-  const [todos,setTodos]=useState<Todo[]>(() => {
+  const [todos, setTodos] = useState<Todo[]>(() => {
     const savedTodos = localStorage.getItem('todos');
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
+  const [todoToEdit, setTodoToEdit] = useState<Todo | null>(null);
 
   const addTodo = (todoData: { text: string; dueDate: Date | null; priority: 'low' | 'medium' | 'high' }) => {
     const newTodo: Todo = {
@@ -44,21 +45,41 @@ const Dashboard:React.FC=()=> {
     localStorage.setItem('todos', JSON.stringify(updatedTodos));
   };
 
+  const editTodo = (id: string, updates: Partial<Todo>) => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === id
+        ? { ...todo, ...updates }
+        : todo
+    );
+    setTodos(updatedTodos);
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  };
+
   return (
-    <div className="row h-100 justify-content-center align-items-center">
-      <div className="card shadow">
-        <div className="card-body p-4">
-            <h2 className="text-center mb-4">Todo List</h2>
-            <TodoForm addTodo={addTodo} />
-            <hr className="my-4"/>
-            <TodoList 
+    <div className="container-fluid py-4">
+      <div className="row">
+        <div className="col-12">
+          <div className="card shadow">
+            <div className="card-body p-4">
+              <h2 className="text-center mb-4">Todo List</h2>
+              <TodoForm 
+                addTodo={addTodo}
+                editTodo={editTodo}
+                todoToEdit={todoToEdit}
+                onCancelEdit={() => setTodoToEdit(null)}
+              />
+              <hr className="my-4"/>
+              <TodoList 
                 todos={todos}
                 toggleTodo={toggleTodo}
                 deleteTodo={deleteTodo}
-            />
-            <footer className="mt-4 pt-3 border-top">
-            <p className="text-center text-muted mb-0">© 2025 My Todos</p>
-            </footer>
+                onEdit={setTodoToEdit}
+              />
+              <footer className="mt-4 pt-3 border-top">
+                <p className="text-center text-muted mb-0">© 2025 My Todos</p>
+              </footer>
+            </div>
+          </div>
         </div>
       </div>
     </div>
